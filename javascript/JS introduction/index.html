@@ -1,0 +1,210 @@
+<html>
+    <head>
+        <title>JS INTRODUCTION</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+    <body>
+        <section id="logincover">
+            
+                <div class="formdivision">
+                    <h2>Sign Up</h2>
+                    <form class="loginform">
+
+                        <!-- username -->
+                        <div class="inputitems">
+                            <label class="name">Username</label><br>
+                            <input type="text" placeholder="Enter Your UserName" id="firstname"/>  <br>
+                            <label id="error" class="error"><span>* </span>Username is required</label>
+                            <label id="lenfright" class="error"><span>* </span>Must be aleast 3 character </label>
+                            <label id="correct" class="errors"><i class="fa-solid fa-circle-check"></i></label>
+                        </div>
+            
+
+                        <!-- password -->
+                        <div class="inputitems">
+                            <label class="name">Password</label> <br>
+                            <input type="password" placeholder="Enter Your password" id="password"/> <br>
+
+                            <i class="fa-solid fa-eye" id="lock" onclick="showpassword()"></i>
+                            <i class="fa-solid fa-eye-slash" id="unlock" onclick="unshowpassword()"></i>
+                            
+                            <label id="errors" class="error"><span>* </span>Password is required</label>
+                            <label id="lenpright" class="error"><span>* </span>Must be aleast 8 character</label>
+                           
+                            <label id="correect" class="errors"><i class="fa-solid fa-circle-check"></i></label>
+                        </div>
+
+
+                        <!-- select country -->
+                        <div class="inputitems" onchange="selectCountry(event)">
+                            <label class="name">Country</label> <br>
+                            <select id="country">
+                                <option value="">Select Country</option>
+                                <option value="IN">INDIA</option>
+                                <option value="USA">USA</option>
+                                <option value="PAK">PAK</option>
+                                <option value="AUS">AUS</option>
+                            </select>
+
+                            <img id="india" src="./img/download.png" alt="">
+                            <img id="usa" src="./img/download.jpg" alt="">
+                            <img id="pak" src="./img/download (1).png" alt="">
+                            <img id="aus" src="./img/download (1).jpg" alt="">
+
+                            <label id="errorss" class="error"><span>* </span>Please enter the country</label><br>
+                            <label id="correeect" class="errors"><i class="fa-solid fa-circle-check"></i></label>
+                        </div>
+
+                        <!-- validation button as NEXT -->
+                        <input class="button" type="button" value="Next" onclick="validateForm()"/>
+            
+                    </form>
+                </div>
+
+                <div class="col-6">
+                    hi
+                </div>
+         
+        </section>
+       
+
+    </body>
+</html>
+
+<script>
+    // validation function
+    function validateForm(){
+        var firstname =document.getElementById('firstname').value
+        var password =document.getElementById('password').value
+        var country =document.getElementById('country').value
+
+        console.log('firstname...',firstname)
+        console.log('password...',password)
+        console.log('country...',country)
+
+
+        if(firstname){
+            if(firstname.length >=3){
+                document.getElementById('lenfright').style="display:none"
+                document.getElementById('correct').style ='display:block'
+                document.getElementById('firstname').style ='border:2px solid green'
+            }
+            else{
+                document.getElementById('lenfright').style="display:block"
+                document.getElementById('firstname').style ='border:2px solid red'
+                document.getElementById('correct').style ='display:none'
+            }
+            
+            document.getElementById('error').style ='display:none'
+        }
+        else{
+            document.getElementById('firstname').style ='border:2px solid red' 
+            document.getElementById('error').style ='display:block'
+            document.getElementById('correct').style ='display:none'
+            document.getElementById('lenfright').style="display:none"
+        }
+
+
+        if(password){
+            if(password.length >= 8){
+                document.getElementById('lenpright').style="display:none"
+                document.getElementById('correect').style ='display:block'
+                document.getElementById('password').style ='border:2px solid green'
+            }
+            else{
+                document.getElementById('lenpright').style="display:block"
+                document.getElementById('password').style ='border:2px solid red'
+                document.getElementById('correect').style ='display:none'
+            }
+            document.getElementById('errors').style ='display:none'
+        }
+        else{
+            document.getElementById('password').style ='border:2px solid red'
+            document.getElementById('errors').style ='display:block'
+            document.getElementById('correect').style ='display:none'
+            document.getElementById('lenpright').style="display:none"
+        }
+
+
+        if(country){
+            document.getElementById('country').style ='border:2px solid green'
+            document.getElementById('errorss').style ='display:none'
+            document.getElementById('correeect').style ='display:block'
+
+        }
+        else{
+            document.getElementById('country').style ='border:2px solid red'
+            document.getElementById('errorss').style ='display:block'
+            document.getElementById('correeect').style ='display:none'
+
+        }
+
+        // background color change
+        var button = document.getElementById("logincover");
+        var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        button.style.backgroundColor = randomColor;
+
+    }
+
+
+    // select country function
+    function selectCountry(event){
+        var selectCountry = event.target.value
+        console.log('selectCountry',selectCountry)
+
+       if(selectCountry==''){
+            document.getElementById('india').style="display:none"
+            document.getElementById('usa').style="display:none"
+            document.getElementById('pak').style="display:none"
+            document.getElementById('aus').style="display:none"
+       }
+       else if(selectCountry=='IN'){
+            document.getElementById('india').style="display:block"
+            document.getElementById('usa').style="display:none"
+            document.getElementById('pak').style="display:none"
+            document.getElementById('aus').style="display:none"
+       }
+       else if(selectCountry=='USA'){
+            document.getElementById('india').style="display:none"
+            document.getElementById('usa').style="display:block"
+            document.getElementById('pak').style="display:none"
+            document.getElementById('aus').style="display:none"
+       }
+       else if(selectCountry=='PAK'){
+            document.getElementById('india').style="display:none"
+            document.getElementById('usa').style="display:none"
+            document.getElementById('pak').style="display:block"
+            document.getElementById('aus').style="display:none"
+       }
+       else if(selectCountry=='AUS'){
+            document.getElementById('india').style="display:none"
+            document.getElementById('usa').style="display:none"
+            document.getElementById('pak').style="display:none"
+            document.getElementById('aus').style="display:block"
+       }
+       
+    }
+
+    document.getElementById('unlock').style="display:none"
+    document.getElementById('lock').style="display:block"
+
+   
+    // showpassword in password
+    function showpassword(){    
+    if(password.type === 'password'){
+        password.type='text'
+        document.getElementById('unlock').style="display:block"
+        document.getElementById('lock').style="display:none"
+       }
+    }
+
+    function unshowpassword(){
+        if(password.type === 'text'){ 
+        password.type= 'password'
+        document.getElementById('unlock').style="display:none"
+        document.getElementById('lock').style="display:block"
+       }
+    }
+</script>

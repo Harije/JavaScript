@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+    <title>content sort</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <textarea placeholder="Enter your text..." id="text" cols="30" rows="10"></textarea>
+            <textarea placeholder="Sort from the text by below buttons..." id="answer" cols="30" rows="10"></textarea><br>
+            <button onclick="getMail()">Get Email</button>
+            <button onclick="getname()">Get Name by Email</button>
+            <button onclick="geturl()">Get URL</button>
+        </div>
+    </div>   
+</body>
+</html>
+
+<script>
+    
+    function getMail(){
+        var textletter = document.getElementById('text').value
+        var textmail=[];
+        textletter = textletter.split(' ');
+
+        for (let i = 0; i < textletter.length; i++) {
+            if(textmail.indexOf(textletter[i])==-1){
+                var emails=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(textletter[i].match(emails)){
+                    textmail.push(textletter[i]);
+                }
+            }
+        }
+        document.getElementById('answer').value = Array.from(textmail).join('\n');
+        console.log('textemail',textmail);
+    }
+
+
+    
+    function getname(){
+        var textletter = document.getElementById('text').value;
+        var textname = [];
+        textletter = textletter.split(' ');
+
+        for(let i = 0; i < textletter.length; i++){
+            var emails = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(textletter[i].match(emails)){
+                var splitname = textletter[i].split('@');
+                var name = splitname[0];
+                if(name.length >= 16){
+                    name = name.substring(0, 16) + '...';
+                }
+                if(textname.indexOf(name) == -1) { 
+                    textname.push(name); 
+                }
+            }
+        }
+        document.getElementById('answer').value = textname.join('\n');
+        console.log('textname', textname);
+    }
+
+
+    
+    function geturl(){
+        var textletter = document.getElementById('text').value;
+        var texturls = [];
+        textletter = textletter.split(' ');
+
+        for (let i = 0; i < textletter.length; i++) {
+            if(texturls.indexOf(textletter[i])==-1){
+                var urls=/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+                if(textletter[i].match(urls)){
+                    texturls.push(textletter[i]);
+                }
+            }
+        }
+        document.getElementById('answer').value = Array.from(texturls).join('\n');
+        console.log('texturls',texturls);
+    } 
+
+
+</script>
