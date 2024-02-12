@@ -1,27 +1,57 @@
-<!DOCTYPE html>
-<head>
-    <title>content sort</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="../../html/Website-2-Arsha/assets-5/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="column">
-            <textarea placeholder="Enter your text..." id="text" cols="30" rows="10"></textarea>
-            <textarea placeholder="Sort from the text by below buttons..." id="answer" cols="30" rows="10"></textarea><br>
-            <button onclick="getMail()">Get Email</button>
-            <button onclick="getname()">Get Name by Email</button>
-            <button onclick="geturl()">Get URL</button>
+
+    <title>filter</title>
+  </head>
+  <body>
+    <section id="formtext" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12 p-4 d-flex flex-column justify-content-center align-items-center">
+                        <div class="d-flex flex-column mb-lg-3 mb-0 col-lg-6 col-12">
+                            <textarea placeholder="Enter your text..." id="text" cols="30" rows="7" class="p-lg-3 p-2 mb-3"></textarea>
+                            <textarea placeholder="Sort from the text by below buttons..." id="answer" cols="30" rows="7" class="p-lg-3 p-2"></textarea><br>
+                        </div>
+                        <div class="d-flex flex-lg-row flex-column gap-lg-4 gap-2 mb-5">
+                            <button onclick="getMailidFetchformThegiventext()" class="p-2 border-0 fs-6">Get Email</button>
+                            <button onclick="getNamefromTheMail()" class="p-2 border-0 fs-6">Get Name by Email</button>
+                            <button onclick="getUrlfromTheText()" class="p-2 border-0 fs-6">Get URL</button>
+                        </div>
+                </div>
+            </div>
         </div>
-    </div>   
-</body>
+    </section>
+   
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="../../html/Website-2-Arsha/assets-5/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
 </html>
 
 <script>
-    
-    function getMail(){
+       
+    function getMailidFetchformThegiventext(){
         var textletter = document.getElementById('text').value
         var textmail=[];
         textletter = textletter.split(' ');
+
+       
 
         for (let i = 0; i < textletter.length; i++) {
             if(textmail.indexOf(textletter[i])==-1){
@@ -31,13 +61,22 @@
                 }
             }
         }
-        document.getElementById('answer').value = Array.from(textmail).join('\n');
-        console.log('textemail',textmail);
+        var text = document.getElementById('text').value.trim();
+        if (text === "") {
+            document.getElementById('answer').value='Please enter some text.'
+        }
+        else{
+            if (textmail.length > 0) {
+                document.getElementById('answer').value = Array.from(textmail).join('\n');
+            }
+            else{
+                document.getElementById('answer').value ="NO email-type are present in the given text"
+            }   
+        }
+        console.log('textemail', textmail);
     }
 
-
-    
-    function getname(){
+    function getNamefromTheMail(){
         var textletter = document.getElementById('text').value;
         var textname = [];
         textletter = textletter.split(' ');
@@ -55,13 +94,23 @@
                 }
             }
         }
-        document.getElementById('answer').value = textname.join('\n');
+        var text = document.getElementById('text').value.trim();
+        if (text === "") {
+            document.getElementById('answer').value='Please enter some text.'
+        }
+        else{
+            if (textname.length > 0) {
+                document.getElementById('answer').value = textname.join('\n');
+            }
+            else{
+                document.getElementById('answer').value ="NO mail are present in the given text to fetch your name"
+            }   
+        }
         console.log('textname', textname);
     }
 
 
-    
-    function geturl(){
+    function getUrlfromTheText(){
         var textletter = document.getElementById('text').value;
         var texturls = [];
         textletter = textletter.split(' ');
@@ -74,9 +123,20 @@
                 }
             }
         }
-        document.getElementById('answer').value = Array.from(texturls).join('\n');
+        var text = document.getElementById('text').value.trim();
+        if (text === "") {
+            document.getElementById('answer').value='Please enter some text.'
+        }
+        else{
+            if (texturls.length > 0) {
+                document.getElementById('answer').value = texturls.join('\n');
+            }
+            else{
+                document.getElementById('answer').value ="NO urls are present in the given text"
+            }   
+        }
+        // document.getElementById('answer').value = Array.from(texturls).join('\n');
         console.log('texturls',texturls);
     } 
-
-
+    
 </script>
