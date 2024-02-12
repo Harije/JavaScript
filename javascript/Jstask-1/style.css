@@ -1,27 +1,13 @@
-*{
-    margin: 0%;
-    padding: 0%;
-    font-family: sans-serif;
-}
-.container{
-    background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)), url(./img/hero-bg.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh; 
-}
-.container .column{
-    padding: 190px 0px;
-    text-align: center;
+#formtext{
+    background-image: url(../Jstask-1/img/hero-bg.jpg);
+     height: 150vh;
+      background-position: end;
+      background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(../Jstask-1/img/hero-bg.jpg);
+
 }
 textarea{
-    margin: 10px;
-    height: 200px;
-    width: 25%;
     border-radius: 5px;
     border: 2px solid whitesmoke;
-    padding: 10px;
     font-size: 20px;
     outline: none;
     color: white;
@@ -31,9 +17,6 @@ textarea::placeholder{
     color: gray;
 }
 button{
-    margin-top: 20px;
-    margin-left: 10px;
-    padding: 15px 20px;
     border: 2px solid darkcyan;
     color: white;
     background-color: rgb(23, 105, 138);
