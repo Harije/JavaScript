@@ -1,9 +1,8 @@
 #formtext{
-    background-image: url(./img/hero-bg.jpg);
+    background-image: url(../Jstask-1/img/hero-bg.jpg);
      height: 150vh;
       background-position: end;
       background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(../Jstask-1/img/hero-bg.jpg);
-
 }
 textarea{
     border-radius: 5px;
