@@ -1,0 +1,27 @@
+#formtext{
+    background-image: url(./img/hero-bg.jpg);
+     height: 150vh;
+      background-position: end;
+      background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(../Jstask-1/img/hero-bg.jpg);
+}
+textarea{
+    border-radius: 5px;
+    border: 2px solid whitesmoke;
+    font-size: 20px;
+    outline: none;
+    color: white;
+    background-color:transparent;
+    backdrop-filter: blur(15px);
+}
+textarea::placeholder{
+    color: gray;
+}
+button{
+    border: 2px solid darkcyan;
+    color: white;
+    background-color: rgb(23, 105, 138);
+    font-size: large;
+}
+button:hover{
+    background-color: rgb(31, 135, 176);
+}
