@@ -24,6 +24,7 @@
                             <button onclick="getMailidFetchformThegiventext()" class="p-2 border-0 fs-6">Get Email</button>
                             <button onclick="getNamefromTheMail()" class="p-2 border-0 fs-6">Get Name by Email</button>
                             <button onclick="getUrlfromTheText()" class="p-2 border-0 fs-6">Get URL</button>
+                            <button onclick="getCapitalizetheText()" class="p-2 border-0 fs-6">Capitalize the text</button>
                         </div>
                 </div>
             </div>
@@ -48,10 +49,12 @@
        
     function getMailidFetchformThegiventext(){
         var textletter = document.getElementById('text').value
-        var textmail=[];
         textletter = textletter.split(' ');
+        var textmail=[];
+    
 
-       
+        // localStorage.setItem('useremail',textmail)
+        // window.location.href='next.html';
 
         for (let i = 0; i < textletter.length; i++) {
             if(textmail.indexOf(textletter[i])==-1){
@@ -74,6 +77,8 @@
             }   
         }
         console.log('textemail', textmail);
+        // var textemail=document.getElementById("textemail").value
+        // localStorage.setItem('getemail',textmail)
     }
 
     function getNamefromTheMail(){
@@ -138,5 +143,30 @@
         // document.getElementById('answer').value = Array.from(texturls).join('\n');
         console.log('texturls',texturls);
     } 
+
+    function getCapitalizetheText(){
+        var textCapitlaize = document.getElementById('text').value;
+        textCapitlaize=textCapitlaize.split(" ")
+        var textcapital =[];
+
+        for(var i=0;i<textCapitlaize.length;i++){
+            if(textcapital.indexOf(textCapitlaize[i]==-1))
+            textcapital.push(textCapitlaize[i].charAt(0).toUpperCase()+ textCapitlaize[i].substring('1'));
+        }
+        var text = document.getElementById('text').value.trim();
+        if (text === "") {
+            document.getElementById('answer').value='Please enter some text.'
+        }
+        else{
+            if (textcapital.length > 0) {
+                document.getElementById('answer').value =textcapital.join(' ');
+            }
+            else{
+                document.getElementById('answer').value ="NO mail are present in the given text to fetch your name"
+            }   
+        }
+        console.log('capitall...',textcapital);
+
+    }
     
 </script>
